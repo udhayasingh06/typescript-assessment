@@ -1,0 +1,19 @@
+{
+  "name": "integer-array-padding-check",
+  "version": "1.0.0",
+  "description": "A TypeScript function to check for padding in a given integer array.",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Udhayasingh",
+    "email": "udhayasingh06@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.8.3"
+  }
+}
