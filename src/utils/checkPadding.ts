@@ -5,7 +5,7 @@ const getLeadingZeros = (str: string): string | null => {
 };
 
 const isIterableEmpty = (iterable: Iterable<string>): boolean => {
-  for (let _ of iterable) return false;
+  for (const _ of iterable) return false;
   return true;
 };
 
@@ -22,7 +22,7 @@ const isValidInput = (intStrs: Iterable<string>): boolean => {
 export function checkNumberPadding(intStrs: Iterable<string>): number {
   if (!isValidInput(intStrs)) {
     throw new Error(
-      "Invalid input: Input must be an iterable of strings containing only digits."
+      "Invalid input: Input must be an iterable of strings containing only digits.",
     );
   }
   if (isIterableEmpty(intStrs)) return 0; //nothing to observe
@@ -35,7 +35,6 @@ export function checkNumberPadding(intStrs: Iterable<string>): number {
   for (const str of intStrs) {
     const leadingZeros = getLeadingZeros(str);
     const paddingLength = leadingZeros ? leadingZeros.length : 0;
-    const unpaddedLength = str.length - paddingLength;
 
     if (paddingLength > 0) {
       hasPadding = true;
@@ -45,10 +44,18 @@ export function checkNumberPadding(intStrs: Iterable<string>): number {
         consistent = false;
       }
     } else {
-      if (minUnpaddedLength === null) {
-        minUnpaddedLength = str.length;
+      const paddingLength: number =
+        minUnpaddedLength === null
+          ? str.length
+          : Math.min(minUnpaddedLength, str.length);
+      if (observedPaddingLength) {
+        if (str.length >= observedPaddingLength) {
+          minUnpaddedLength = paddingLength;
+        } else {
+          consistent = false;
+        }
       } else {
-        minUnpaddedLength = Math.min(minUnpaddedLength, str.length);
+        minUnpaddedLength = paddingLength;
       }
     }
   }
