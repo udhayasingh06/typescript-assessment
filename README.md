@@ -27,6 +27,10 @@ This project is a TypeScript assessment.
     npm install
     ```
 
+# Coding Challenge
+
+The function implementation for the coding challenge for this assessment is implemented in the `utils/checkPadding.ts` file. This file contains a function that checks if a given string is padded correctly.
+
 # Running the Application
 
 To start the application, run the following command:
